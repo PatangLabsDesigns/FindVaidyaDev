@@ -59,7 +59,7 @@ export default function Navbar() {
                 >
                     <ul className="justify-end items-center space-y-6 md:flex md:space-x-6 md:space-y-0">
                         {/* About Link */}
-                        <li>
+                        {/* <li>
                             <Link
                                 to="/about"
                                 className={`${isActive("/about")
@@ -71,7 +71,7 @@ export default function Navbar() {
                             >
                                 About
                             </Link>
-                        </li>
+                        </li> */}
 
                         {/* Contact Link */}
                         <li>

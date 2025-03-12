@@ -47,6 +47,8 @@ export default function Home() {
                     </>
                 }
                 subTitle="Your health matters. FindVaidya is here to connect you with verified trusted doctors based on your needs effortlessly."
+                to="/register"
+                label="List your practice for Free"
             />
             <SectionWrapper bg="bg-primary-light" title="Our Mission: Accessible Healthcare for All">
                 <p>

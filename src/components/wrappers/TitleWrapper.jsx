@@ -1,4 +1,5 @@
-export default function TitleWrapper({ title, subTitle }) {
+import Button from "../common/Button";
+export default function TitleWrapper({ title, subTitle, to, label }) {
     return (
         <section className="sectionWrapper">
             <div className="flex flex-col items-left md:items-center md:text-center gap-8">
@@ -8,6 +9,7 @@ export default function TitleWrapper({ title, subTitle }) {
                 <p className="text-lg font-base text-text-body">
                     {subTitle}
                 </p>
+                {to ? <Button to={to} labelName={label} /> : null}
             </div>
         </section>
     );
