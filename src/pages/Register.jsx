@@ -1,5 +1,6 @@
 import TitleWrapper from "../components/TitleWrapper";
 import RegisterForm from "../components/RegisterForm";
+import CTA from "../components/CTA";
 
 export default function Register() {
     return (
