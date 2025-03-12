@@ -15,12 +15,12 @@ import {
 
 export default function Home() {
     const features = [
-        { icon: <IconCalendarSearch size={32} />, title: "Find and Book Appointments", subtitle: "Search for doctors in your area, and book appointments with just a few clicks." },
-        { icon: <IconDeviceLaptop size={32} />, title: "Video Consultations", subtitle: "When you can’t visit in person, connect with doctors via video consultation." },
-        { icon: <IconDatabaseExport size={32} />, title: "Medical Document Repository", subtitle: "Store and access your medical records safely online." },
-        { icon: <IconTestPipe size={32} />, title: "Lab Reports", subtitle: "Get your lab reports securely stored and accessible whenever you need them." },
-        { icon: <IconUsersPlus size={32} />, title: "Secure Referrals", subtitle: "Your doctor can easily refer you to specialists and share medical information securely." },
-        { icon: <IconMedicineSyrup size={32} />, title: "Pharmacy Delivery", subtitle: "We partner with pharmacies to have your prescribed medications delivered directly to you." }
+        { icon: <IconCalendarSearch size={32} />, title: "Find and Book Appointments", subtitle: "Search for doctors in your area, and book appointments with just a few clicks.", isCurrent: false },
+        { icon: <IconDeviceLaptop size={32} />, title: "Video Consultations", subtitle: "When you can’t visit in person, connect with doctors via video consultation.", isCurrent: false },
+        { icon: <IconDatabaseExport size={32} />, title: "Medical Document Repository", subtitle: "Store and access your medical records safely online.", isCurrent: false },
+        { icon: <IconTestPipe size={32} />, title: "Lab Reports", subtitle: "Get your lab reports securely stored and accessible whenever you need them.", isCurrent: false },
+        { icon: <IconUsersPlus size={32} />, title: "Secure Referrals", subtitle: "Your doctor can easily refer you to specialists and share medical information securely.", isCurrent: false },
+        { icon: <IconMedicineSyrup size={32} />, title: "Pharmacy Delivery", subtitle: "We partner with pharmacies to have your prescribed medications delivered directly to you.", isCurrent: false }
     ];
 
     const doctorBenefits = [
@@ -46,7 +46,7 @@ export default function Home() {
                         Launching Soon!
                     </>
                 }
-                subTitle="Your health matters. FindVaidya is here to connect you with verified trusted doctors based on your needs effortlessly."
+                subTitle="Your health matters. FindVaidya is coming soon to connect you with verified trusted doctors based on your needs effortlessly."
                 to="/register"
                 label="List your practice for Free"
             />
@@ -69,8 +69,8 @@ export default function Home() {
 
             <SectionWrapper title="Why Choose FindVaidya?">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-                    <InfoCard icon={<IconStethoscope size={32} />} title="For Doctors" listItems={doctorBenefits} />
-                    <InfoCard icon={<IconUser size={32} />} title="For Patients" listItems={patientBenefits} />
+                    <InfoCard icon={<IconStethoscope size={32} />} title="For Doctors" listItems={doctorBenefits} isCurrent={false} />
+                    <InfoCard icon={<IconUser size={32} />} title="For Patients" listItems={patientBenefits} isCurrent={false} />
                 </div>
             </SectionWrapper>
             <CTA />

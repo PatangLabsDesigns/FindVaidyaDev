@@ -1,6 +1,5 @@
 import TitleWrapper from "../components/wrappers/TitleWrapper";
 import RegisterForm from "../components/RegisterForm";
-import CTA from "../components/layout/CTA";
 
 export default function Register() {
     return (
@@ -18,7 +17,6 @@ export default function Register() {
                 subTitle="Join our trusted network of healthcare providers. Get discovered by patients looking for expert care in their area—completely free.."
             />
             <RegisterForm />
-            <CTA />
         </main >
     );
 }
