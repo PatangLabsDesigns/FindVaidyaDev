@@ -1,4 +1,6 @@
 import TitleWrapper from "../components/TitleWrapper";
+import CTA from "../components/CTA";
+
 export default function About() {
     return (
         <main className="mainWrapper">
@@ -23,6 +25,7 @@ export default function About() {
                     </div>
                 </div>
             </section>
+            <CTA />
         </main>
     );
 }

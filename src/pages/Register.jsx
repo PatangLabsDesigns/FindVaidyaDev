@@ -17,6 +17,7 @@ export default function Register() {
                 subTitle="Join our trusted network of healthcare providers. Get discovered by patients looking for expert care in their area—completely free.."
             />
             <RegisterForm />
+            <CTA />
         </main >
     );
 }

@@ -6,7 +6,6 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Register from "./pages/Register";
 import NoPage from "./pages/NoPage";
-import CTA from "./components/CTA";
 
 
 function App() {

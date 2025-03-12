@@ -15,6 +15,7 @@ export default function Home() {
                 }
                 subTitle="Your health matters. FindVaidya is here to connect you with verified trusted doctors based on your needs effortlessly."
             />
+            <CTA />
         </main>
     );
 }
