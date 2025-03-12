@@ -45,11 +45,15 @@ export default function About() {
                 }
             />
 
-            <SectionWrapper bg="bg-primary-light" title="Our Mission: Accessible Healthcare for All">
+            <div bg="bg-primary-light">
+                <div>
+                    <p>Our Mission</p>
+                    <h2>Accessible Healthcare for All</h2>
+                </div>
                 <p>
                     At FindVaidya, we believe everyone deserves quality healthcare, no matter where they live. While cities like Pune and Mumbai have numerous healthcare facilities, rural areas in Maharashtra often lack the same access. We’re here to bridge that gap. Our platform connects patients with trusted doctors, whether they’re in a busy city or a remote village.
                 </p>
-            </SectionWrapper>
+            </div>
 
             <SectionWrapper title="A Complete Healthcare Ecosystem">
                 <p>

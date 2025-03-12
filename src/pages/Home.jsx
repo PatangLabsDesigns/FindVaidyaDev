@@ -50,11 +50,17 @@ export default function Home() {
                 to="/register"
                 label="List your practice for Free"
             />
-            <SectionWrapper bg="bg-primary-light" title="Our Mission: Accessible Healthcare for All">
-                <p>
-                    At FindVaidya, we believe everyone deserves quality healthcare, no matter where they live. While cities like Pune and Mumbai have numerous healthcare facilities, rural areas in Maharashtra often lack the same access. We’re here to bridge that gap. Our platform connects patients with trusted doctors, whether they’re in a busy city or a remote village.
-                </p>
-            </SectionWrapper>
+            <section className="sectionWrapper bg-primary-light">
+                <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-16">
+                    <div>
+                        <p className="uppercase text-text-light text-sm tracking-widest">Our Mission</p>
+                        <h2 className="capitalize font-headings text-4xl font-bold text-text-heading">Accessible Healthcare for All</h2>
+                    </div>
+                    <p className="font-base col-span-2">
+                        At FindVaidya, we believe everyone deserves quality healthcare, no matter where they live. While cities like Pune and Mumbai have numerous healthcare facilities, rural areas in Maharashtra often lack the same access. We’re here to bridge that gap. Our platform connects patients with trusted doctors, whether they’re in a busy city or a remote village.
+                    </p>
+                </div>
+            </section>
 
             <SectionWrapper title="A Complete Healthcare Ecosystem">
                 <p>
