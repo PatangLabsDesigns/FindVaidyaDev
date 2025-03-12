@@ -9,7 +9,7 @@ export default function TitleWrapper({ title, subTitle, to, label }) {
                 <p className="text-lg font-base text-text-body">
                     {subTitle}
                 </p>
-                {to ? <Button to={to} labelName={label} /> : null}
+                {to ? <div><Button to={to} labelName={label} /> </div> : null}
             </div>
         </section>
     );
