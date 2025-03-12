@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom"; // Import useLocation
-import Logo from "../assets/logo-light.png";
-import Button from "./Button";
+import Logo from "../../assets/logo-light.png";
+import Button from "../common/Button";
 
 export default function Navbar() {
     const [state, setState] = useState(false);
@@ -12,7 +12,7 @@ export default function Navbar() {
 
     return (
         <nav className="bg-white border-b border-outline w-full pb-6 md:pb-0 md:static font-base text-text-body">
-            <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
+            <div className="items-center px-4 mx-auto md:flex md:px-8">
                 <div className="flex items-center justify-between py-3 md:py-5 md:block">
                     <Link to="/">
                         <img src={Logo} alt="FindVaidya Logo" className="h-12" />

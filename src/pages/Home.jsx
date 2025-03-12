@@ -1,5 +1,5 @@
-import TitleWrapper from "../components/TitleWrapper";
-import CTA from "../components/CTA";
+import TitleWrapper from "../components/wrappers/TitleWrapper";
+import CTA from "../components/layout/CTA";
 
 export default function Home() {
     return (

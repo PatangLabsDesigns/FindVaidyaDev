@@ -1,5 +1,5 @@
-import CTA from "../components/CTA"
-import Button from "../components/Button"
+import Button from "../components/common/Button"
+import CTA from "../components/layout/CTA";
 
 export default function NoPage() {
   return (
