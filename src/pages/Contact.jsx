@@ -21,7 +21,7 @@ export default function Contact() {
                 subTitle="Have questions or need assistance? Our team is ready to support you every step of the way. Reach out today and let's talk about how we can help."
             />
             <section className="sectionWrapper">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 w-full">
+                <div className="flex flex-col md:flex-row gap-16 w-full">
                     <iframe
                         data-tally-src="https://tally.so/embed/mRkvld?hideTitle=1&transparentBackground=1&dynamicHeight=1"
                         loading="lazy"
@@ -29,9 +29,9 @@ export default function Contact() {
                         height="805"
                         title="Contact Us"
                     ></iframe>
-                    <div className="flex flex-col gap-6 items-start bg-primary-light p-6 h-fit w-full rounded-xl">
+                    <div className="flex flex-col gap-6 items-start bg-primary-light p-6 h-fit w-full rounded-xl order-first">
                         <img src={Logo} alt="Find Vaidya Logo" className="h-18" />
-                        <div className="flex flex-col gap-4">
+                        <div className="flex flex-row gap-4 flex-wrap">
                             <div className="flex flex-row gap-2">
                                 <div className="text-primary-base"><IconUser size={24} /></div>Mrs.Supriya Pande
                             </div>

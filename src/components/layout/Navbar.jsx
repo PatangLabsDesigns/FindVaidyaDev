@@ -11,7 +11,7 @@ export default function Navbar() {
     const isActive = (path) => location.pathname === path;
 
     return (
-        <nav className="bg-white border-b border-outline w-full pb-6 md:pb-0 md:static font-base text-text-body">
+        <nav className="bg-white border-b border-outline w-full md:static font-base text-text-body">
             <div className="items-center px-4 mx-auto md:flex md:px-8">
                 <div className="flex items-center justify-between py-3 md:py-5 md:block">
                     <Link to="/">
@@ -59,7 +59,7 @@ export default function Navbar() {
                 >
                     <ul className="justify-end items-center space-y-6 md:flex md:space-x-6 md:space-y-0">
                         {/* About Link */}
-                        {/* <li>
+                        <li>
                             <Link
                                 to="/about"
                                 className={`${isActive("/about")
@@ -71,7 +71,7 @@ export default function Navbar() {
                             >
                                 About
                             </Link>
-                        </li> */}
+                        </li>
 
                         {/* Contact Link */}
                         <li>
@@ -89,7 +89,7 @@ export default function Navbar() {
                         </li>
 
                         {/* Register Link */}
-                        <li>
+                        <li className="mb-4 md:mb-0">
                             <Button to="/register" labelName="List your practice for Free" isActive={isActive("/register")} onClick={() => setState(false)} />
                         </li>
                     </ul>
