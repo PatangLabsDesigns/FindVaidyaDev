@@ -7,7 +7,7 @@ export default function Footer() {
           <a href="/terms" className='hover:text-primary-dark hover:font-bold'>Terms of Use</a>
           <a href="/privacy" className='hover:text-primary-dark hover:font-bold'>Privacy Policy</a>
         </nav>
-        <p className='text-center'>Made with ❤️ by <a href="https://www.patanglabs.design" target="_blank" rel="noopener noreferrer" className='font-bold hover:text-red-500'>Patang Labs</a></p>
+        <p className='text-center'>Made with ✨ by <a href="https://www.patanglabs.design" target="_blank" rel="noopener noreferrer" className='font-bold underline'>Patang Labs</a></p>
       </div>
     </footer>
   )
