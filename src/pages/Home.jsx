@@ -1,85 +1,434 @@
-import TitleWrapper from "../components/wrappers/TitleWrapper";
-import CTA from "../components/layout/CTA";
-import InfoCard from "../components/cards/InfoCard";
-import SectionWrapper from "../components/wrappers/SectionWrapper";
+import React, { useState } from "react";
 import {
-    IconCalendarSearch,
-    IconDeviceLaptop,
-    IconDatabaseExport,
-    IconTestPipe,
-    IconUsersPlus,
-    IconMedicineSyrup,
-    IconStethoscope,
-    IconUser
-} from '@tabler/icons-react';
+  Box,
+  Typography,
+  Container,
+  Grid,
+  TextField,
+  Button,
+  Card,
+  CardContent,
+  InputAdornment,
+  Paper,
+  Rating,
+  Avatar,
+  Divider,
+} from "@mui/material";
+import {
+  IconSearch,
+  IconMapPin,
+  IconStethoscope,
+  IconUsers,
+  IconCertificate,
+  IconDeviceMobile,
+} from "@tabler/icons-react";
 
-export default function Home() {
-    const features = [
-        { icon: <IconCalendarSearch size={32} />, title: "Find and Book Appointments", subtitle: "Search for doctors in your area, and book appointments with just a few clicks.", comingSoon: true },
-        { icon: <IconDeviceLaptop size={32} />, title: "Video Consultations", subtitle: "When you can’t visit in person, connect with doctors via video consultation.", comingSoon: true },
-        { icon: <IconDatabaseExport size={32} />, title: "Medical Document Repository", subtitle: "Store and access your medical records safely online.", comingSoon: true },
-        { icon: <IconTestPipe size={32} />, title: "Lab Reports", subtitle: "Get your lab reports securely stored and accessible whenever you need them.", comingSoon: true },
-        { icon: <IconUsersPlus size={32} />, title: "Secure Referrals", subtitle: "Your doctor can easily refer you to specialists and share medical information securely.", comingSoon: true },
-        { icon: <IconMedicineSyrup size={32} />, title: "Pharmacy Delivery", subtitle: "We partner with pharmacies to have your prescribed medications delivered directly to you.", comingSoon: true }
-    ];
+const Home = () => {
+  const [searchQuery, setSearchQuery] = useState("");
 
-    const doctorBenefits = [
-        { bold: "Expand Your Reach", text: "Connect with more patients across your locality and beyond." },
-        { bold: "Manage Your Practice", text: "Use FindVaidya’s platform to schedule appointments, store records, and communicate easily with patients." }
-    ];
+  return (
+    <Box>
+      {/* Hero Section */}
+      <Box
+        sx={{
+          backgroundColor: "primary.light",
+          py: { xs: 6, md: 10 },
+          position: "relative",
+        }}
+      >
+        <Container maxWidth="lg">
+          <Box sx={{ maxWidth: "md", mx: "auto", textAlign: "center" }}>
+            <Typography
+              variant="h1"
+              sx={{
+                mb: 2,
+                fontWeight: "bold",
+                color: "primary.dark",
+              }}
+            >
+              Find Your Ayurvedic Doctor
+            </Typography>
+            <Typography
+              variant="h5"
+              sx={{
+                mb: 4,
+                color: "text.secondary",
+                fontWeight: "normal",
+              }}
+            >
+              Connect with certified Ayurvedic practitioners for personalized
+              holistic healthcare
+            </Typography>
 
-    const patientBenefits = [
-        { bold: "Convenience", text: "Find trusted doctors, book appointments, and consult online, all in one place." },
-        { bold: "Security", text: "Your personal health data is kept private and secure." },
-        { bold: "Access", text: "Whether in a city or village, healthcare is within reach." }
-    ];
+            {/* Search Bar */}
+            <Paper
+              elevation={3}
+              sx={{
+                p: 2,
+                display: "flex",
+                alignItems: "center",
+                borderRadius: 2,
+                mb: 4,
+              }}
+            >
+              <TextField
+                fullWidth
+                placeholder="Search by ailment, treatment or doctor name"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <IconSearch color="#069bf1" />
+                    </InputAdornment>
+                  ),
+                }}
+                variant="standard"
+                sx={{ mr: 2 }}
+              />
+              <Button
+                variant="contained"
+                color="primary"
+                size="large"
+                startIcon={<IconMapPin />}
+              >
+                Search
+              </Button>
+            </Paper>
+          </Box>
+        </Container>
+      </Box>
 
-    return (
-        <main className="mainWrapper">
-            <TitleWrapper
-                title={
-                    <>
-                        Find Trusted Doctors Near You,
-                        <span className="hidden md:inline">
-                            <br />
-                        </span>
-                        Launching Soon!
-                    </>
-                }
-                subTitle="Your health matters. FindVaidya is coming soon to connect you with verified trusted doctors based on your needs effortlessly."
-                to="/register"
-                label="List your practice for Free"
-            />
-            <section className="sectionWrapper bg-primary-light">
-                <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-16">
-                    <div>
-                        <p className="uppercase text-text-light text-sm tracking-widest">Our Mission</p>
-                        <h2 className="capitalize font-headings text-4xl font-bold text-text-heading">Accessible Healthcare for All</h2>
-                    </div>
-                    <p className="font-base col-span-2">
-                        At FindVaidya, we believe everyone deserves quality healthcare, no matter where they live. While cities like Pune and Mumbai have numerous healthcare facilities, rural areas in Maharashtra often lack the same access. We’re here to bridge that gap. Our platform connects patients with trusted doctors, whether they’re in a busy city or a remote village.
-                    </p>
-                </div>
-            </section>
+      {/* Specialties Section */}
+      <Box sx={{ py: 8 }}>
+        <Container maxWidth="lg">
+          <Typography variant="h2" sx={{ mb: 1, textAlign: "center" }}>
+            Explore Ayurvedic Specialties
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{ mb: 6, textAlign: "center", maxWidth: "md", mx: "auto" }}
+          >
+            Find practitioners specialized in various Ayurvedic disciplines to
+            address your specific health concerns
+          </Typography>
 
-            <SectionWrapper title="A Complete Healthcare Ecosystem">
-                <p>
-                    We’re building more than just a doctor directory. FindVaidya is creating a comprehensive healthcare ecosystem that’s easy to use, secure, and designed to meet all your medical needs. Here’s how:
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
-                    {features.map((feature, index) => (
-                        <InfoCard key={index} {...feature} />
-                    ))}
-                </div>
-            </SectionWrapper>
+          <Grid container spacing={3}>
+            {[
+              {
+                title: "Panchakarma",
+                description: "Detoxification and rejuvenation therapies",
+                icon: <IconStethoscope size={40} />,
+              },
+              {
+                title: "Rasayana",
+                description: "Rejuvenation and longevity treatments",
+                icon: <IconUsers size={40} />,
+              },
+              {
+                title: "Kayachikitsa",
+                description: "Internal medicine and general treatments",
+                icon: <IconCertificate size={40} />,
+              },
+              {
+                title: "Shalya Tantra",
+                description: "Surgical procedures and wound management",
+                icon: <IconDeviceMobile size={40} />,
+              },
+            ].map((specialty, index) => (
+              <Grid item xs={12} sm={6} md={3} key={index}>
+                <Card
+                  sx={{
+                    height: "100%",
+                    textAlign: "center",
+                    transition: "0.3s",
+                    "&:hover": { transform: "translateY(-5px)", boxShadow: 6 },
+                  }}
+                >
+                  <CardContent>
+                    <Box sx={{ color: "primary.main", mb: 2 }}>
+                      {specialty.icon}
+                    </Box>
+                    <Typography variant="h5" gutterBottom>
+                      {specialty.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {specialty.description}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
 
-            <SectionWrapper title="Why Choose FindVaidya?">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-                    <InfoCard icon={<IconStethoscope size={32} />} title="For Doctors" listItems={doctorBenefits} />
-                    <InfoCard icon={<IconUser size={32} />} title="For Patients" listItems={patientBenefits} />
-                </div>
-            </SectionWrapper>
-            <CTA />
-        </main>
-    );
-}
+      {/* How It Works Section */}
+      <Box sx={{ py: 8, backgroundColor: "grey.50" }}>
+        <Container maxWidth="lg">
+          <Typography variant="h2" sx={{ mb: 1, textAlign: "center" }}>
+            How FindVaidya Works
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{ mb: 6, textAlign: "center", maxWidth: "md", mx: "auto" }}
+          >
+            Simple steps to connect with the right Ayurvedic doctor for your
+            needs
+          </Typography>
+
+          <Grid container spacing={4}>
+            {[
+              {
+                title: "Search",
+                description:
+                  "Find doctors based on your health concerns, location, or specific Ayurvedic treatments",
+                number: "1",
+              },
+              {
+                title: "Compare",
+                description:
+                  "Review doctor profiles, qualifications, patient reviews, and available appointment slots",
+                number: "2",
+              },
+              {
+                title: "Connect",
+                description:
+                  "Book an appointment with your chosen practitioner and start your healing journey",
+                number: "3",
+              },
+            ].map((step, index) => (
+              <Grid item xs={12} md={4} key={index}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    textAlign: "center",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      width: 60,
+                      height: 60,
+                      borderRadius: "50%",
+                      backgroundColor: "primary.main",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      mb: 2,
+                      color: "white",
+                      fontSize: 24,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {step.number}
+                  </Box>
+                  <Typography variant="h4" gutterBottom>
+                    {step.title}
+                  </Typography>
+                  <Typography variant="body1">{step.description}</Typography>
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* Featured Doctors */}
+      <Box sx={{ py: 8 }}>
+        <Container maxWidth="lg">
+          <Typography variant="h2" sx={{ mb: 1, textAlign: "center" }}>
+            Featured Practitioners
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{ mb: 6, textAlign: "center", maxWidth: "md", mx: "auto" }}
+          >
+            Meet some of our highly rated Ayurvedic doctors
+          </Typography>
+
+          <Grid container spacing={4}>
+            {[
+              {
+                name: "Dr. Arjun Sharma",
+                specialty: "Panchakarma Specialist",
+                experience: "15+ years experience",
+                rating: 4.9,
+              },
+              {
+                name: "Dr. Meera Patel",
+                specialty: "Rasayana & Rejuvenation",
+                experience: "12+ years experience",
+                rating: 4.8,
+              },
+              {
+                name: "Dr. Vikram Singh",
+                specialty: "Kayachikitsa Expert",
+                experience: "20+ years experience",
+                rating: 5.0,
+              },
+            ].map((doctor, index) => (
+              <Grid item xs={12} md={4} key={index}>
+                <Card
+                  sx={{
+                    height: "100%",
+                    transition: "0.3s",
+                    "&:hover": { transform: "translateY(-5px)", boxShadow: 6 },
+                  }}
+                >
+                  <CardContent>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Avatar
+                        sx={{
+                          width: 100,
+                          height: 100,
+                          mb: 2,
+                          bgcolor: "primary.main",
+                        }}
+                      >
+                        {doctor.name
+                          .split(" ")
+                          .map((n) => n[0])
+                          .join("")}
+                      </Avatar>
+                      <Typography variant="h5" gutterBottom>
+                        {doctor.name}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        gutterBottom
+                      >
+                        {doctor.specialty}
+                      </Typography>
+                      <Typography variant="body2" gutterBottom>
+                        {doctor.experience}
+                      </Typography>
+                      <Box
+                        sx={{ display: "flex", alignItems: "center", mb: 2 }}
+                      >
+                        <Rating
+                          value={doctor.rating}
+                          precision={0.1}
+                          readOnly
+                        />
+                        <Typography variant="body2" sx={{ ml: 1 }}>
+                          {doctor.rating}
+                        </Typography>
+                      </Box>
+                      <Button variant="outlined" color="primary">
+                        View Profile
+                      </Button>
+                    </Box>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* Testimonials */}
+      <Box sx={{ py: 8, backgroundColor: "primary.light" }}>
+        <Container maxWidth="lg">
+          <Typography variant="h2" sx={{ mb: 1, textAlign: "center" }}>
+            What Our Users Say
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{ mb: 6, textAlign: "center", maxWidth: "md", mx: "auto" }}
+          >
+            Hear from patients who found the right Ayurvedic care through
+            FindVaidya
+          </Typography>
+
+          <Grid container spacing={4}>
+            {[
+              {
+                name: "Rahul M.",
+                testimonial:
+                  "FindVaidya helped me connect with a specialist for my chronic digestive issues. After years of trying different treatments, I finally found relief through Ayurveda.",
+                location: "Mumbai",
+              },
+              {
+                name: "Priya K.",
+                testimonial:
+                  "The platform made it so easy to find an Ayurvedic doctor near me. I was able to read reviews, check qualifications, and book an appointment all in one place.",
+                location: "Bangalore",
+              },
+              {
+                name: "Amit S.",
+                testimonial:
+                  "As someone new to Ayurvedic treatments, I appreciated how FindVaidya helped me understand different specializations and find the right doctor for my specific needs.",
+                location: "Delhi",
+              },
+            ].map((testimonial, index) => (
+              <Grid item xs={12} md={4} key={index}>
+                <Card sx={{ height: "100%", p: 3 }}>
+                  <CardContent>
+                    <Typography
+                      variant="body1"
+                      paragraph
+                      sx={{ fontStyle: "italic" }}
+                    >
+                      "{testimonial.testimonial}"
+                    </Typography>
+                    <Divider sx={{ my: 2 }} />
+                    <Box sx={{ display: "flex", alignItems: "center" }}>
+                      <Avatar sx={{ mr: 2, bgcolor: "primary.main" }}>
+                        {testimonial.name[0]}
+                      </Avatar>
+                      <Box>
+                        <Typography variant="subtitle1">
+                          {testimonial.name}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {testimonial.location}
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* CTA Section */}
+      <Box sx={{ py: 10, textAlign: "center" }}>
+        <Container maxWidth="md">
+          <Typography variant="h2" gutterBottom>
+            Ready to Find Your Vaidya?
+          </Typography>
+          <Typography variant="body1" paragraph sx={{ mb: 4 }}>
+            Join thousands of patients who have discovered the benefits of
+            personalized Ayurvedic care through our platform.
+          </Typography>
+          <Box>
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              sx={{ mr: 2 }}
+            >
+              Search Doctors
+            </Button>
+            <Button variant="outlined" color="primary" size="large">
+              List Your Practice
+            </Button>
+          </Box>
+        </Container>
+      </Box>
+    </Box>
+  );
+};
+
+export default Home;

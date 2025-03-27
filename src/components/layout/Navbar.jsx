@@ -1,100 +1,168 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom"; // Import useLocation
-import Logo from "../../assets/logo-light.png";
-import Button from "../common/Button";
+import React, { useState } from "react";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Box,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  Container,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
+import { IconMenu2, IconX } from "@tabler/icons-react";
+import logo from "../../assets/logo-light.png";
 
-export default function Navbar() {
-    const [state, setState] = useState(false);
-    const location = useLocation(); // Get the current location/path
+const navItems = [
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+  { name: "Contact", path: "/contact" },
+];
 
-    // Check if the current route matches the link for each section
-    const isActive = (path) => location.pathname === path;
+const Navbar = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-    return (
-        <nav className="bg-white border-b border-outline w-full md:static font-base text-text-body">
-            <div className="items-center px-4 mx-auto md:flex md:px-8">
-                <div className="flex items-center justify-between py-3 md:py-5 md:block">
-                    <Link to="/">
-                        <img src={Logo} alt="FindVaidya Logo" className="h-12" />
-                    </Link>
-                    <div className="md:hidden">
-                        <button
-                            className="text-primary-base hover:text-primary-dark"
-                            onClick={() => setState(!state)}
-                        >
-                            {state ? (
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-6 w-6"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor"
-                                >
-                                    <path
-                                        fillRule="evenodd"
-                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                        clipRule="evenodd"
-                                    />
-                                </svg>
-                            ) : (
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth={1.5}
-                                    stroke="currentColor"
-                                    className="w-6 h-6"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                                    />
-                                </svg>
-                            )}
-                        </button>
-                    </div>
-                </div>
-                <div
-                    className={`flex-1 pb-3 mt-8 md:block md:pb-0 md:mt-0 ${state ? "block" : "hidden"}`}
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+  const drawer = (
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          p: 2,
+        }}
+      >
+        <Box
+          component={RouterLink}
+          to="/"
+          sx={{ textDecoration: "none", color: "inherit" }}
+        >
+          <img src={logo} alt="FindVaidya Logo" style={{ height: "40px" }} />
+        </Box>
+        <IconButton color="inherit" onClick={handleDrawerToggle}>
+          <IconX />
+        </IconButton>
+      </Box>
+      <List>
+        {navItems.map((item) => (
+          <ListItem
+            key={item.name}
+            component={RouterLink}
+            to={item.path}
+            sx={{ textAlign: "center" }}
+          >
+            <ListItemText primary={item.name} />
+          </ListItem>
+        ))}
+        <ListItem sx={{ justifyContent: "center", mt: 2 }}>
+          <Button
+            variant="outlined"
+            color="primary"
+            component={RouterLink}
+            to="/login"
+            sx={{ mr: 1 }}
+          >
+            Login
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            component={RouterLink}
+            to="/register"
+          >
+            List your practice for free
+          </Button>
+        </ListItem>
+      </List>
+    </Box>
+  );
+
+  return (
+    <AppBar
+      position="static"
+      color="default"
+      elevation={1}
+      sx={{ backgroundColor: "white" }}
+    >
+      <Container maxWidth="lg">
+        <Toolbar sx={{ justifyContent: "space-between" }}>
+          <Box
+            component={RouterLink}
+            to="/"
+            sx={{ textDecoration: "none", color: "inherit" }}
+          >
+            <img src={logo} alt="FindVaidya Logo" style={{ height: "40px" }} />
+          </Box>
+
+          {isMobile ? (
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="end"
+              onClick={handleDrawerToggle}
+            >
+              <IconMenu2 />
+            </IconButton>
+          ) : (
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              {navItems.map((item) => (
+                <Button
+                  key={item.name}
+                  component={RouterLink}
+                  to={item.path}
+                  sx={{ mx: 1 }}
                 >
-                    <ul className="justify-end items-center space-y-6 md:flex md:space-x-6 md:space-y-0">
-                        {/* About Link */}
-                        <li>
-                            <Link
-                                to="/about"
-                                className={`${isActive("/about")
-                                    ? "text-primary-base font-bold cursor-default"
-                                    : "hover:text-primary-dark"
-                                    }`}
-                                style={isActive("/about") ? { pointerEvents: "none" } : {}}
-                                onClick={() => setState(false)}
-                            >
-                                About
-                            </Link>
-                        </li>
+                  {item.name}
+                </Button>
+              ))}
+              <Button
+                variant="outlined"
+                color="primary"
+                component={RouterLink}
+                to="/login"
+                sx={{ ml: 2, mr: 1 }}
+              >
+                Login
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                component={RouterLink}
+                to="/register"
+              >
+                List your practice for free
+              </Button>
+            </Box>
+          )}
+        </Toolbar>
+      </Container>
+      <Drawer
+        anchor="right"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        ModalProps={{
+          keepMounted: true, // Better open performance on mobile
+        }}
+        sx={{
+          display: { xs: "block", md: "none" },
+          "& .MuiDrawer-paper": { boxSizing: "border-box", width: 240 },
+        }}
+      >
+        {drawer}
+      </Drawer>
+    </AppBar>
+  );
+};
 
-                        {/* Contact Link */}
-                        <li>
-                            <Link
-                                to="/contact"
-                                className={`${isActive("/contact")
-                                    ? "text-primary-base font-bold cursor-default"
-                                    : "hover:text-primary-dark"
-                                    }`}
-                                style={isActive("/contact") ? { pointerEvents: "none" } : {}}
-                                onClick={() => setState(false)}
-                            >
-                                Contact
-                            </Link>
-                        </li>
-
-                        {/* Register Link */}
-                        <li className="mb-4 md:mb-0">
-                            <Button to="/register" labelName="List your practice for Free" isActive={isActive("/register")} onClick={() => setState(false)} />
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    );
-}
+export default Navbar;
